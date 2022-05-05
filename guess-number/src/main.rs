@@ -1,3 +1,6 @@
 fn main() {
-    println!("Hello, world!");
+    let guess = 'Z';
+    let no = 'Zz';
+    println!("{}", guess);
 }
+
