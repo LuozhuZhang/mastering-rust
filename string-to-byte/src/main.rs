@@ -1,5 +1,5 @@
 fn main() {
-    let s = String::from(" aasdasdas");
+    let s = String::from("hello world");
     // String to Bytes
     let bytes = s.as_bytes();
     // Get byte from bytes array
