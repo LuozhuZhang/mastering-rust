@@ -8,11 +8,12 @@ fn main() {
     let word = first_word(&s); // word 的值为 5
     println!("s content is {}", s);
 
-    s.clear(); // 这清空了字符串，使其等于 ""
+    s.clear(); // 错误! word引用的值没了
     println!("s content is {}", s);
 
-    // word 在此处的值仍然是 5，
-    // 但是没有更多的字符串让我们可以有效地应用数值 5。word 的值现在完全无效！
+    // * 没有使用slice的时候，就算word引用的值s发生改变（clear了），word也可以使用（这是一个大bug）
+    // * 使用slice可以弹出error，避免我们遇到这种问题
+    println!("works? {}", word);
 }
 
 fn first_word(s: &String) -> usize {
