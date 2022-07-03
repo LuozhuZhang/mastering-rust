@@ -3,17 +3,14 @@ use std::time::Duration;
 
 fn main() {
 
-    let handle = thread::spawn(|| {
-        for i in 1..10 {
-            println!("hi number {} from the spawned thread!", i);
-            thread::sleep(Duration::from_millis(1));
-        }
-    });
+ let mut num = Vec::with_capacity(11);
 
-    handle.join().unwrap();
+ std::thread::spawn(move || {
+     for i in 0..10 {
+        num.push(i);
+     }
+ });
 
-    for i in 1..5 {
-        println!("hi number {} from the main thread!", i);
-        thread::sleep(Duration::from_millis(1));
-    }
+//  &num.push(11);
+ println!("{}", num.capacity());
 }
