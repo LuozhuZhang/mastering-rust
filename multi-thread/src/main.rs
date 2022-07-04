@@ -4,16 +4,19 @@ fn main() {
 
  let mut num = Vec::with_capacity(11);
 
- {
-    std::thread::spawn(move || {
+ let a = {
+    let a = std::thread::spawn(move || {
         for i in 0..10 {
            num.push(i);
         }
+        num
     });
- }
+    a
+ };
 
+ let b = a.join().unwrap();
  {
-    println!("{}", num.capacity());
+    println!("{}", b.capacity());
  }
 }
 
