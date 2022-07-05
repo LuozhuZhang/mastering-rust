@@ -16,7 +16,11 @@ fn main() {
 
  let b = a.join().unwrap();
  {
-    println!("{}", b.capacity());
+     std::thread::spawn(move || {
+         let b = b.clone();
+         b.push(0);
+     });
+    // println!("{}", b.capacity());
  }
 }
 
